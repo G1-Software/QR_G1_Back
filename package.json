@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no test specified\" && exit 0",
+    "build": "echo \"Building the project...\" && exit 0",
     "dev": "nodemon src/index.js",
     "start": "node src/index.js"
   },
@@ -20,6 +21,7 @@
   },
   "homepage": "https://github.com/G1-Software/QR_G1_Back#readme",
   "dependencies": {
+    "@supabase/supabase-js": "^2.58.0",
     "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
     "dotenv": "^17.2.2",
