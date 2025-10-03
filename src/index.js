@@ -23,7 +23,7 @@ app.use('/qr_scan_log', require('./routes/qr_scan_log'));
 app.use('/page', require('./routes/page'));
 app.use('/page_view_log', require('./routes/page_view_log'));
 
-app.get('/', (_req, res) => res.send('Hello World!'));
+app.get('/', (_req, res) => res.send('Hello World! desde el Backend deployado en Render'));
 
 const port = process.env.PORT;
 
