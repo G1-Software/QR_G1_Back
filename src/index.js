@@ -27,5 +27,6 @@ app.get('/', (_req, res) => res.send('Hello World! desde el Backend deployado en
 
 const port = process.env.PORT;
 
-app.listen(port, () => {console.log(`Server listening on ${port}`)});
+module.exports = app;
+// app.listen(port, () => {console.log(`Server listening on ${port}`)});
 

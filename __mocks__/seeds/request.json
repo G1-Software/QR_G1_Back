@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "qr_id": 1,
+    "area": "Aseo",
+    "subarea": "Habitación",
+    "description": "Necesito que alguien me ayude a limpiar mi habitación.",
+    "requester_full_name": "Amanda Campos",
+    "requester_email": "amanda.rod@uc.cl",
+    "status": "Pendiente",
+    "created_at": "2025-10-02 22:03:47.194238",
+    "updated_at": "2025-10-02 22:03:47.194238"
+  },
+  {
+    "id": 2,
+    "qr_id": 1,
+    "area": "Mantención",
+    "subarea": "Baño",
+    "description": "",
+    "requester_full_name": "Amanda Campos",
+    "requester_email": "amanda.rod@uc.cl",
+    "status": "Pendiente",
+    "created_at": "2025-10-02 22:09:05.329185",
+    "updated_at": "2025-10-02 22:09:05.329185"
+  },
+  {
+    "id": 3,
+    "qr_id": 1,
+    "area": "Apoyo Espiritual",
+    "subarea": "",
+    "description": "Necesito ayuda para subir el ánimo",
+    "requester_full_name": "Amanda Campos",
+    "requester_email": "amanda.campos@uc.cl",
+    "status": "Pendiente",
+    "created_at": "2025-10-02 22:11:06.169587",
+    "updated_at": "2025-10-02 22:11:06.169587"
+  },
+  {
+    "id": 4,
+    "qr_id": 1,
+    "area": "Apoyo Espiritual",
+    "subarea": "",
+    "description": "Necesito ayuda para subir el ánimo",
+    "requester_full_name": "Amanda Campos",
+    "requester_email": "amanda.campos@uc.cl",
+    "status": "Pendiente",
+    "created_at": "2025-10-02 22:11:06.169587",
+    "updated_at": "2025-10-02 22:11:06.169587"
+  }
+]
