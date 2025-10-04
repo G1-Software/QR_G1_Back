@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "full_name": "Manuel Pulgar",
+    "rut_number": "25.685.739-1",
+    "email": "mfpulgar@uc.cl",
+    "phone_number": "+56987262972",
+    "institution": "Hospital UC",
+    "area": "Mantención",
+    "position": "Supervisor",
+    "created_at": "2025-10-02 22:05:42.41142",
+    "updated_at": "2025-10-02 22:05:42.41142"
+  },
+  {
+    "id": 2,
+    "full_name": "Sofía Pedraza",
+    "rut_number": "20.806.376-6",
+    "email": "sofa.pedraza@uc.cl",
+    "phone_number": "+56956072502",
+    "institution": "Hospital UC",
+    "area": "Mantención",
+    "position": "Trabajador",
+    "created_at": "2025-10-02 22:06:13.979782",
+    "updated_at": "2025-10-02 22:06:13.979782"
+  },
+  {
+    "id": 3,
+    "full_name": "Dafne Valdivia",
+    "rut_number": "20.819.320-1",
+    "email": "dafne.valdivia@uc.cl",
+    "phone_number": "+56991379959",
+    "institution": "Hospital UC",
+    "area": "Aseo",
+    "position": "Supervisor",
+    "created_at": "2025-10-02 22:07:42.444944",
+    "updated_at": "2025-10-02 22:07:42.444944"
+  },
+  {
+    "id": 4,
+    "full_name": "Amanda Campos",
+    "rut_number": "21.023.359-8",
+    "email": "amanda.rod@uc.cl",
+    "phone_number": "+56966171963",
+    "institution": "Hospital UC",
+    "area": "Nutrición",
+    "position": "Trabajador",
+    "created_at": "2025-10-02 22:16:55.839155",
+    "updated_at": "2025-10-02 22:16:55.839155"
+  }
+]

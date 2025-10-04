@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "institution": "Hospital UC",
+    "building": "A",
+    "floor": 3,
+    "service": "MQ",
+    "room": 302,
+    "bed": 1,
+    "image": "Pendiente",
+    "created_at": "2025-10-02 21:55:25.271721",
+    "updated_at": "2025-10-02 21:55:25.271721"
+  },
+  {
+    "id": 2,
+    "institution": "Hospital UC",
+    "building": "B",
+    "floor": 2,
+    "service": "MQ",
+    "room": 200,
+    "bed": 1,
+    "image": "Pendiente",
+    "created_at": "2025-10-02 21:56:09.472277",
+    "updated_at": "2025-10-02 21:56:09.472277"
+  },
+  {
+    "id": 3,
+    "institution": "Hospital UC",
+    "building": "B",
+    "floor": 2,
+    "service": "MQ",
+    "room": 200,
+    "bed": 2,
+    "image": "Pendiente",
+    "created_at": "2025-10-02 21:56:37.474648",
+    "updated_at": "2025-10-02 21:56:37.474648"
+  },
+  {
+    "id": 4,
+    "institution": "Hospital UC",
+    "building": "C",
+    "floor": 4,
+    "service": "TR",
+    "room": 401,
+    "bed": 1,
+    "image": "Pendiente",
+    "created_at": "2025-10-02 21:57:28.208405",
+    "updated_at": "2025-10-02 21:57:28.208405"
+  },
+  {
+    "id": 5,
+    "institution": "Hospital UC",
+    "building": "C",
+    "floor": 4,
+    "service": "TR",
+    "room": 401,
+    "bed": 2,
+    "image": "Pendiente",
+    "created_at": "2025-10-02 21:58:15.571088",
+    "updated_at": "2025-10-02 21:58:15.571088"
+  }
+]
