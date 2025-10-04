@@ -10,6 +10,14 @@ describe('STAFF', () => {
     const res = await request(app).get('/staff');
     expect(res.status).toBe(200);
   });
+
+  test('GET /staff error', async () => {
+    __mock.setError('staff', 'select', 'DB down');
+    const res = await request(app).get('/staff');
+    expect(res.status).toBe(400);
+    expect(res.body).toHaveProperty('error');
+  });
+
   test('GET /staff/:id', async () => {
     const { data } = await require('../src/supabase').from('staff').select();
     console.log(data);
@@ -18,4 +26,11 @@ describe('STAFF', () => {
     console.log(res.body);
     expect(res.status).toBe(200);
   });
+
+  test('GET /staff/:id con id que no existe', async () => {
+    const res = await request(app).get('/staff/9999');
+    expect(res.status).toBe(404);
+    expect(res.body).toHaveProperty('error');
+  });
+
 });
