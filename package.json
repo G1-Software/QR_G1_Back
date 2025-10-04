@@ -9,7 +9,7 @@
     "coverage": "jest --coverage",
     "build": "echo \"Building the project...\" && exit 0",
     "dev": "nodemon src/index.js",
-    "start": "node src/index.js"
+    "start": "node src/server.js"
   },
   "jest": {
     "testEnvironment": "node"
