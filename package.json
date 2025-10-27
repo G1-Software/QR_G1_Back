@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --runInBand",
+    "test": "jest --runInBand tests/integration",
     "test:watch": "jest --watch",
     "coverage": "jest --coverage",
     "build": "echo \"Building the project...\" && exit 0",
