@@ -36,15 +36,25 @@ jobs:
       - name: Install dependencies
         run: npm ci 
 
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
       - name: Lint (if present)
         run: npm run lint --if-present  
 
       - name: Run Tests
         run: npm test --if-present  
 
+      - name: E2E (Playwright)
+        env:
+          ADMIN_MAIL_LOGIN: ${{ secrets.ADMIN_MAIL_LOGIN }}
+          ADMIN_PASSWORD_LOGIN: ${{ secrets.ADMIN_PASSWORD_LOGIN }}
+        run: npx playwright test tests/e2e
+
+
       - name: Build
         run: npm run build  
-
+      
       - name: Upload Build Artifact
         if: success()
         uses: actions/upload-artifact@v4
