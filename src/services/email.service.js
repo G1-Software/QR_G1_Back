@@ -52,7 +52,7 @@ Hospital UC Christus`
    - Edificio: ${qrInfo.building}
    - Piso: ${qrInfo.floor}
    - Servicio: ${qrInfo.service}
-   - Sala: ${qrInfo.room}
+   - Habitación: ${qrInfo.room}
    - Cama: ${qrInfo.bed}
 
 Por favor, revisar el sistema.`
@@ -80,7 +80,7 @@ Por favor, revisar el sistema.`
    - Edificio: ${qrInfo.building}
    - Piso: ${qrInfo.floor}
    - Servicio: ${qrInfo.service}
-   - Sala: ${qrInfo.room}
+   - Habitación: ${qrInfo.room}
    - Cama: ${qrInfo.bed}
 
 Revisar y actuar según corresponda.`
