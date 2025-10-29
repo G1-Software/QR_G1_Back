@@ -18,14 +18,14 @@ describe('QR', () => {
     expect(res.body).toHaveProperty('error');
   });
 
-  test('GET /qr/:id', async () => {
+  test('GET /qr/:token', async () => {
     const { data } = await require('../src/supabase').from('qr').select();
-    const res = await request(app).get(`/qr/${data[0].id}`);
+    const res = await request(app).get(`/qr/${data[0].token}`);
     expect(res.status).toBe(200);
   });
 
-  test('GET /qr/:id que no existe', async () => {
-    const res = await request(app).get('/qr/9999');
+  test('GET /qr/:token que no existe', async () => {
+    const res = await request(app).get('/qr/invalid-token');
     expect(res.status).toBe(404);
     expect(res.body).toHaveProperty('error');
   });
