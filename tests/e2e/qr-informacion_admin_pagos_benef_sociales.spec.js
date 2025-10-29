@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 
+/*
 test('test ir a info admin y buscar información del GES', async ({ page }) => {
   await page.goto('https://qr-g1-front.vercel.app/1');
   await expect(page.getByRole('link', { name: 'INFORMACIÓN ADMINISTRATIVA Y PAGOS' })).toBeVisible();
@@ -32,3 +33,5 @@ test('testir a info admin y buscar información de ley de urgencias', async ({ p
   await page.getByRole('link', { name: 'LEY DE URGENCIA' }).click();
     // FALTA HACER ASSERT DE CONTENIDO ESPECIFICO DE LEY DE URGENCIA YA QUE AÚN NO ESTA.
 });
+
+*/

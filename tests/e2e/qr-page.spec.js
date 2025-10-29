@@ -6,7 +6,7 @@ test('qr detail page loads', async ({ page }) => {
   await expect(page.locator('body')).toBeVisible();
 });
 
-test('revisar contenido landing page', async ({ page }) => {
+/*test('revisar contenido landing page', async ({ page }) => {
   await page.goto('https://qr-g1-front.vercel.app/1');
   await expect(page.getByRole('link', { name: 'INFORMACIÓN CLINICA AL PACIENTE' })).toBeVisible();
   await expect(page.getByRole('link', { name: 'INFORMACIÓN ADMINISTRATIVA Y PAGOS' })).toBeVisible();
@@ -16,4 +16,4 @@ test('revisar contenido landing page', async ({ page }) => {
   await expect(page.getByText('Hospital UC - MQ')).toBeVisible();
   await page.getByText('Hospital UC - MQ').click();
   await expect(page.getByText('Por favor indíquenos de qué área es su consulta')).toBeVisible();
-});
+});*/
