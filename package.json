@@ -13,7 +13,16 @@
     "playwright": "playwright test"
   },
   "jest": {
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/index.js",
+      "!src/server.js",
+      "!src/supabase.js"
+    ],
+    "coveragePathIgnorePatterns": [
+      "<rootDir>/src/services/"
+    ]
   },
   "repository": {
     "type": "git",

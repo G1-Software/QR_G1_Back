@@ -1,9 +1,16 @@
 const request = require('supertest');
 jest.mock('../../src/supabase', () => require('../../__mocks__/supabase'));
+jest.mock('../../src/services/email.service', () => ({
+  handleRequestEmailFlow: jest.fn()
+}));
 const app = require('../../src/index');
+const { handleRequestEmailFlow } = require('../../src/services/email.service');
 const { __mock } = require('../../src/supabase');
 
-beforeEach(() => __mock.resetMockData());
+beforeEach(() => {
+  __mock.resetMockData();
+  jest.clearAllMocks();
+});
 
 describe('REQUEST', () => {
   test('GET /request listado', async () => {
@@ -39,6 +46,7 @@ describe('REQUEST', () => {
     const res = await request(app).post('/request').send(payload);
     expect(res.status).toBe(200); 
     expect(res.body.data).toHaveProperty('id');
+    expect(handleRequestEmailFlow).toHaveBeenCalledWith(res.body.data);
   });
 
   
@@ -94,4 +102,38 @@ describe('REQUEST', () => {
     expect(res.status).toBe(400); // se envía 400 si insert falla
     expect(res.body).toHaveProperty('error');
   });
+});
+
+test('POST /request devuelve 500 cuando insert lanza', async () => {
+  jest.mock('../../src/services/email.service', () => ({
+    handleRequestEmailFlow: jest.fn(),
+  }));
+  const supabase = require('../../src/supabase');
+  const app = require('../../src/index');
+
+  const makePayload = () => ({
+    qr_id: 10,
+    area: 'Mantencion',
+    subarea: 'Baño',
+    description: 'Ampolleta quemada',
+    requester_full_name: 'Pedro',
+    requester_email: 'pedro@uc.cl',
+    status: 'Pendiente',
+  });
+
+  const fromSpy = jest.spyOn(supabase, 'from').mockImplementation(() => ({
+    insert: () => ({
+      select: () => ({
+        single: () => Promise.reject(new Error('boom')), // rechaza la promesa
+      }),
+    }),
+  }));
+
+  try {
+    const res = await request(app).post('/request').send(makePayload());
+    expect(res.status).toBe(500);
+    expect(res.body).toEqual({ error: 'Error al crear la solicitud.' });
+  } finally {
+    fromSpy.mockRestore();
+  }
 });
