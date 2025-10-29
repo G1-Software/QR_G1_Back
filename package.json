@@ -13,7 +13,16 @@
     "playwright": "playwright test"
   },
   "jest": {
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/index.js",
+      "!src/server.js",
+      "!src/supabase.js"
+    ],
+    "coveragePathIgnorePatterns": [
+      "<rootDir>/src/services/"
+    ]
   },
   "repository": {
     "type": "git",
@@ -34,7 +43,8 @@
     "express": "^5.1.0",
     "express-rate-limit": "^8.1.0",
     "helmet": "^8.1.0",
-    "morgan": "^1.10.1"
+    "morgan": "^1.10.1",
+    "nodemailer": "^7.0.10"
   },
   "devDependencies": {
     "@playwright/test": "^1.56.1",
