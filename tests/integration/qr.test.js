@@ -19,7 +19,7 @@ describe('QR', () => {
   });
 
    test('GET /qr/:token', async () => {
-    const { data } = await require('../src/supabase').from('qr').select();
+    const { data } = await require('../../src/supabase').from('qr').select();
     const res = await request(app).get(`/qr/${data[0].token}`);
     expect(res.status).toBe(200);
   });
