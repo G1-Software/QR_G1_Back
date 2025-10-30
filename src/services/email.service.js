@@ -12,7 +12,7 @@ const transporter = nodemailer.createTransport({
 
 async function handleRequestEmailFlow(requestData) {
   try {
-    const {qr_id, area, subarea, description, requester_full_name, requester_email} = requestData;
+    const { qr_id, area, subarea, description, requester_full_name, requester_email } = requestData;
 
     await transporter.sendMail({
       from: `Hospital UC Christus <${process.env.GMAIL_USER}>`,
@@ -30,14 +30,20 @@ Gracias por contactarnos,
 Hospital UC Christus`
     });
 
-
     const { data: qrInfo } = await supabase.from('qr').select('institution, building, floor, service, room, bed').eq('id', qr_id).single();
-    const { data: supervisors } = await supabase.from('staff').select('email, full_name').eq('area', area).eq('position', 'Supervisor');
-    
-    if (supervisors && supervisors.length > 0) {
+    const { data: boss } = await supabase.from('staff').select('email').eq('area', area).eq('position', 'Jefe').single();
+    const { data: supervisors } = await supabase.from('staff').select('email').eq('area', area).eq('position', 'Supervisor');
+    const { data: workers } = await supabase.from('staff').select('email').eq('area', area).eq('position', 'Trabajador');
+
+    const bossAndSupervisorEmails = [
+      ...(boss?.email ? [boss.email] : []),
+      ...(supervisors?.map(s => s.email) || [])
+    ];
+
+    if (bossAndSupervisorEmails.length > 0) {
       await transporter.sendMail({
         from: `Hospital UC Christus <${process.env.GMAIL_USER}>`,
-        to: supervisors[0].email,
+        to: bossAndSupervisorEmails.join(','),
         subject: `Nueva solicitud - Área ${area}`,
         text: `Nueva solicitud registrada.
 
@@ -48,22 +54,20 @@ Hospital UC Christus`
 • Descripción: ${description}
 
 • Ubicación del paciente:
-   - Institución: ${qrInfo.institution}
-   - Edificio: ${qrInfo.building}
-   - Piso: ${qrInfo.floor}
-   - Servicio: ${qrInfo.service}
-   - Habitación: ${qrInfo.room}
-   - Cama: ${qrInfo.bed}
+   - Institución: ${qrInfo?.institution}
+   - Edificio: ${qrInfo?.building}
+   - Piso: ${qrInfo?.floor}
+   - Servicio: ${qrInfo?.service}
+   - Habitación: ${qrInfo?.room}
+   - Cama: ${qrInfo?.bed}
 
-Por favor, revisar el sistema.`
+Por favor, revisar el sistema y gestionar según corresponda.`
       });
     }
 
-   
-    const { data: workers } = await supabase.from('staff').select('email').eq('area', area).eq('position', 'Trabajador');
-
     if (workers && workers.length > 0) {
       const workerEmails = workers.map(w => w.email);
+
       await transporter.sendMail({
         from: `Hospital UC Christus <${process.env.GMAIL_USER}>`,
         to: workerEmails.join(','),
@@ -76,19 +80,19 @@ Por favor, revisar el sistema.`
 • Descripción: ${description}
 
 • Ubicación del paciente:
-   - Institución: ${qrInfo.institution}
-   - Edificio: ${qrInfo.building}
-   - Piso: ${qrInfo.floor}
-   - Servicio: ${qrInfo.service}
-   - Habitación: ${qrInfo.room}
-   - Cama: ${qrInfo.bed}
+   - Institución: ${qrInfo?.institution}
+   - Edificio: ${qrInfo?.building}
+   - Piso: ${qrInfo?.floor}
+   - Servicio: ${qrInfo?.service}
+   - Habitación: ${qrInfo?.room}
+   - Cama: ${qrInfo?.bed}
 
-Revisar y actuar según corresponda.`
+Favor apoyar según corresponda.`
       });
     }
 
   } catch (err) {
-    console.error('Error enviando correos:', err);
+    console.error('❌ Error enviando correos:', err);
   }
 }
 
