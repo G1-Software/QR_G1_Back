@@ -6,7 +6,7 @@ dotenv.config();
 test('test login con cuenta que no existe por lo tanto no debe dejar entrar', async ({ page }) => {
   await page.goto('https://qr-g1-front.vercel.app/admin');
   await page.getByRole('textbox', { name: 'Email address' }).click();
-  await page.getByRole('textbox', { name: 'Email address' }).fill('testmalo@uc.cl');
+  await page.getByRole('textbox', { name: 'Email address' }).fill('testmalouc.cl');
   await page.getByRole('textbox', { name: 'Password' }).click();
   await page.getByRole('textbox', { name: 'Password' }).fill('falso');
   await page.getByRole('button', { name: 'Continue', exact: true }).click();

@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test('test hacer solicitud de forma correcta ', async ({ page }) => {
-  await page.goto('https://qr-g1-front.vercel.app/a3f5c2d8e9b14f6c8a0d3e4b9f2c1a7e');
+  await page.goto('https://qr-g1-front.vercel.app/?token=a3f5c2d8e9b14f6c8a0d3e4b9f2c1a7e');
   await expect(page.getByRole('link', { name: 'SOLICITUDES' })).toBeVisible();
   await page.getByRole('link', { name: 'SOLICITUDES' }).click();
   await expect(page.getByRole('heading', { name: 'ENVÍO DE SOLICITUD' })).toBeVisible();
@@ -30,7 +30,7 @@ test('test hacer solicitud de forma correcta ', async ({ page }) => {
 
 
 test('test hacer solicitud con mail erroneo por lo tanto no se envia', async ({ page }) => {
-  await page.goto('https://qr-g1-front.vercel.app/a3f5c2d8e9b14f6c8a0d3e4b9f2c1a7e');
+  await page.goto('https://qr-g1-front.vercel.app/?token=a3f5c2d8e9b14f6c8a0d3e4b9f2c1a7e');
   await expect(page.getByRole('link', { name: 'SOLICITUDES' })).toBeVisible();
   await page.getByRole('link', { name: 'SOLICITUDES' }).click();
   await expect(page.locator('input[type="text"]')).toBeVisible();
@@ -40,8 +40,8 @@ test('test hacer solicitud con mail erroneo por lo tanto no se envia', async ({ 
   await page.locator('input[type="text"]').fill('Prueba');
   await page.locator('input[type="email"]').click();
   await page.locator('input[type="email"]').fill('mailerroneo');
-  await page.getByRole('combobox').selectOption('Aseo');
-  await page.getByRole('combobox').nth(1).selectOption('Ropería');
+  await page.getByRole('combobox').selectOption('Apoyo Espiritual');
+  await page.getByRole('combobox').nth(1).selectOption('Solicita Oraciones para su Salud');
   await page.locator('textarea').click();
   await page.locator('textarea').fill('mala la solicitud');
   await page.getByRole('button', { name: 'Enviar Solicitud' }).click();
@@ -50,7 +50,7 @@ test('test hacer solicitud con mail erroneo por lo tanto no se envia', async ({ 
 
 
 test('test hacer solicitud sin llenar campos obligatorios de nombre y correo', async ({ page }) => {
-  await page.goto('https://qr-g1-front.vercel.app/a3f5c2d8e9b14f6c8a0d3e4b9f2c1a7e');
+  await page.goto('https://qr-g1-front.vercel.app/?token=a3f5c2d8e9b14f6c8a0d3e4b9f2c1a7e');
   await expect(page.getByRole('link', { name: 'SOLICITUDES' })).toBeVisible();
   await page.getByRole('link', { name: 'SOLICITUDES' }).click();
   await page.getByRole('combobox').selectOption('Apoyo Espiritual');
@@ -63,7 +63,7 @@ test('test hacer solicitud sin llenar campos obligatorios de nombre y correo', a
 });
 
 test('test hacer solicitud sin ingresar nombre, por lo tanto no se envia', async ({ page }) => {
-  await page.goto('https://qr-g1-front.vercel.app/a3f5c2d8e9b14f6c8a0d3e4b9f2c1a7e');
+  await page.goto('https://qr-g1-front.vercel.app/?token=a3f5c2d8e9b14f6c8a0d3e4b9f2c1a7e');
   await expect(page.getByRole('link', { name: 'SOLICITUDES' })).toBeVisible();
   await page.getByRole('link', { name: 'SOLICITUDES' }).click();
   await page.locator('input[type="email"]').click();
