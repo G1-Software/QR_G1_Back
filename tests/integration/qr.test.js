@@ -18,15 +18,9 @@ describe('QR', () => {
     expect(res.body).toHaveProperty('error');
   });
 
-<<<<<<< HEAD:tests/qr.test.js
-  test('GET /qr/:token', async () => {
-    const { data } = await require('../src/supabase').from('qr').select();
-    const res = await request(app).get(`/qr/${data[0].token}`);
-=======
-  test('GET /qr/:id', async () => {
+   test('GET /qr/:token', async () => {
     const { data } = await require('../../src/supabase').from('qr').select();
-    const res = await request(app).get(`/qr/${data[0].id}`);
->>>>>>> develop:tests/integration/qr.test.js
+    const res = await request(app).get(`/qr/${data[0].token}`);
     expect(res.status).toBe(200);
   });
 
