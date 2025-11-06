@@ -57,6 +57,7 @@ jobs:
         env:
           ADMIN_MAIL_LOGIN: ${{ secrets.ADMIN_MAIL_LOGIN }}
           ADMIN_PASSWORD_LOGIN: ${{ secrets.ADMIN_PASSWORD_LOGIN }}
+          RESEND_API_KEY: ${{secrets.RESEND_API_KEY}}
         run: npx playwright test tests/e2e
 
 
