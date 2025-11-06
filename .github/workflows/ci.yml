@@ -51,13 +51,14 @@ jobs:
         run: npm run lint --if-present  
 
       - name: Run Tests
+        env:
+          RESEND_API_KEY: ${{secrets.RESEND_API_KEY}}
         run: npm test --if-present  
 
       - name: E2E (Playwright)
         env:
           ADMIN_MAIL_LOGIN: ${{ secrets.ADMIN_MAIL_LOGIN }}
           ADMIN_PASSWORD_LOGIN: ${{ secrets.ADMIN_PASSWORD_LOGIN }}
-          RESEND_API_KEY: ${{secrets.RESEND_API_KEY}}
         run: npx playwright test tests/e2e
 
 
