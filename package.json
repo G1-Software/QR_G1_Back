@@ -8,7 +8,7 @@
     "test:watch": "jest --watch",
     "coverage": "jest --coverage",
     "build": "echo \"Building the project...\" && exit 0",
-    "dev": "nodemon src/ server.js",
+    "dev": "nodemon src/server.js",
     "start": "node src/server.js",
     "playwright": "playwright test"
   },
