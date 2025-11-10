@@ -31,8 +31,8 @@ test('test hacer solicitud de forma correcta ', async ({ page }) => {
 
 test('test hacer solicitud con mail erroneo por lo tanto no se envia', async ({ page }) => {
   await page.goto('https://qr-g1-front.vercel.app/?token=a3f5c2d8e9b14f6c8a0d3e4b9f2c1a7e');
-  await expect(page.getByRole('link', { name: 'SOLICITUDES' })).toBeVisible();
-  await page.getByRole('link', { name: 'SOLICITUDES' }).click();
+  await expect(page.getByRole('link', { name: 'SOLICITUDES (LIMPIEZA, MANTENCIÓN, NUTRICIÓN, ETC)' })).toBeVisible();
+  await page.getByRole('link', { name: 'SOLICITUDES (LIMPIEZA, MANTENCIÓN, NUTRICIÓN, ETC)' }).click();
   await expect(page.locator('input[type="text"]')).toBeVisible();
   await page.locator('input[type="text"]').click();
   await page.locator('input[type="text"]').fill('P');
@@ -51,8 +51,8 @@ test('test hacer solicitud con mail erroneo por lo tanto no se envia', async ({ 
 
 test('test hacer solicitud sin llenar campos obligatorios de nombre y correo', async ({ page }) => {
   await page.goto('https://qr-g1-front.vercel.app/?token=a3f5c2d8e9b14f6c8a0d3e4b9f2c1a7e');
-  await expect(page.getByRole('link', { name: 'SOLICITUDES' })).toBeVisible();
-  await page.getByRole('link', { name: 'SOLICITUDES' }).click();
+  await expect(page.getByRole('link', { name: 'SOLICITUDES (LIMPIEZA, MANTENCIÓN, NUTRICIÓN, ETC)' })).toBeVisible();
+  await page.getByRole('link', { name: 'SOLICITUDES (LIMPIEZA, MANTENCIÓN, NUTRICIÓN, ETC)' }).click();
   await page.getByRole('combobox').selectOption('Apoyo Espiritual');
   await page.getByRole('combobox').nth(1).selectOption('Solicita Sacramento, Comunión y Confesión');
   await page.locator('textarea').click();
@@ -64,8 +64,8 @@ test('test hacer solicitud sin llenar campos obligatorios de nombre y correo', a
 
 test('test hacer solicitud sin ingresar nombre, por lo tanto no se envia', async ({ page }) => {
   await page.goto('https://qr-g1-front.vercel.app/?token=a3f5c2d8e9b14f6c8a0d3e4b9f2c1a7e');
-  await expect(page.getByRole('link', { name: 'SOLICITUDES' })).toBeVisible();
-  await page.getByRole('link', { name: 'SOLICITUDES' }).click();
+  await expect(page.getByRole('link', { name: 'SOLICITUDES (LIMPIEZA, MANTENCIÓN, NUTRICIÓN, ETC)' })).toBeVisible();
+  await page.getByRole('link', { name: 'SOLICITUDES (LIMPIEZA, MANTENCIÓN, NUTRICIÓN, ETC)' }).click();
   await page.locator('input[type="email"]').click();
   await page.locator('input[type="email"]').fill('mail@uc.cl');
   await page.getByRole('combobox').selectOption('Asistencia Social');
