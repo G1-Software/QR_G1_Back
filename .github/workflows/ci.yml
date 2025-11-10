@@ -51,6 +51,8 @@ jobs:
         run: npm run lint --if-present  
 
       - name: Run Tests
+        env:
+          RESEND_API_KEY: ${{secrets.RESEND_API_KEY}}
         run: npm test --if-present  
 
       - name: E2E (Playwright)
