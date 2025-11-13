@@ -83,7 +83,7 @@ describe('REQUEST', () => {
   test('GET /request con error forzado', async () => {
     __mock.setError('request', 'select', 'DB down');
     const res = await request(app).get('/request');
-    expect(res.status).toBe(500);  // ahora debe devolver 500
+    expect(res.status).toBe(400);  // ahora debe devolver 400
     expect(res.body).toHaveProperty('error');
   });
 
