@@ -145,6 +145,14 @@ function from(table) {
       return api;
     },
 
+    range(from, to) {
+      return api;
+    },
+
+    order(column, opts = {}) {
+      return api;
+    },
+
     update(patch) {
       op = 'update';
       payload = patch;
