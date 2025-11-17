@@ -21,7 +21,7 @@ app.use("/qr", require("./routes/qr"));
 app.use("/qr_scan_log", require("./routes/qr_scan_log"));
 app.use("/page", require("./routes/page"));
 app.use("/page_view_log", require("./routes/page_view_log"));
-app.use("/chatbot", require("./routes/chatbot"));
+app.use("/chatbot", require("./routes/chatbot_questions"));
 
 app.get("/", (_req, res) => res.send("Hello World! desde QR_G1_Software_Back"));
 
