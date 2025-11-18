@@ -236,8 +236,11 @@ const TOPICS_RAW = {
   ],
   
   "INGRESO DE MASCOTAS": [
+    "mascota",
     "mascotas",
+    "ingresar mascota",
     "ingresar mascotas",
+    "visita mascota",
     "visita mascotas",
     "ingresar animal",
   ],
