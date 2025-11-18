@@ -10,220 +10,248 @@ function normalize(text) {
 }
 
 const TOPICS_RAW = {
+  // INFORMACIÓN CLÍNICA AL PACIENTE
+  "RESULTADOS DE EXÁMENES": [
+    "resultados",
+    "resultados de exámenes",
+    "ver exámenes",
+    "ver mis exámenes",
+    "exámenes de laboratorio",
+    "exámenes de imágenes",
+    "resultados de exámenes de laboratorio",
+    "resultados de exámenes de imágenes",
+    "descargar resultados",
+  ],
+
   "DOCUMENTACIÓN CLÍNICA": [
-    "ficha clínica",
-    "epicrisis",
-    "protocolo operatorio",
     "documentación clínica",
     "documentos médicos",
-    "historial médico",
-    "copia de ficha",
-    "ver mi ficha",
-    "mi epicrisis",
-    "protocolo cirugía",
-    "informes médicos",
-    "documentos hospital",
-    "sacar documentos",
     "solicitar documentos",
+    "obtener documentos",
+    "ficha clínica",
+    "copia de mi ficha clínica",
+    "ver mi ficha clínica",
+    "epicrisis",
+    "copia de mi epicrisis",
+    "ver mi epicrisis",
+    "protocolo operatorio",
+    "protocolo intervención quirúrgica", 
   ],
 
   "INFORMACIÓN SOBRE DIAGNÓSTICO O DE TRATAMIENTO MÉDICO": [
+    "información de diagnóstico",
     "diagnóstico",
-    "tratamiento",
-    "información médica",
-    "información clínica",
+    "información de tratamiento médico",
+    "tratamiento médico",
+    "información de tratamiento clínico",
+    "tratamiento clínico",
+    "información del tratamiento realizado",
+    "resultado del tratamiento realizado",
+    "información del procedimiento realizado",
+    "resultado del procedimiento realizado",
+    "información de la cirugía realizada",
+    "resultado de la cirugía realizada",
     "qué tiene",
-    "qué tratamiento",
     "médico tratante",
-    "cirujano",
-    "equipo médico",
-    "información del doctor",
-    "resultado del tratamiento",
-    "explicación médica",
+    "información del doctor tratante",
+    "cirujano tratante",
+    "equipo médico tratante",
   ],
 
   "CITA POST HOSPITALIZACIÓN": [
     "cita post hospitalización",
-    "agendar control",
+    "agendar cita",
+    "donde agendo una cita",
+    "hora post hospitalización",
+    "agendar hora",
+    "donde agendo una hora",
     "sacar hora",
     "reservar hora",
-    "post alta",
-    "control médico",
-    "control después del alta",
-    "agendar cita",
-    "donde agendo cita",
+    "control post hospitalización",
+    "agendar control",
+    "donde agendo un control",
   ],
 
   "HORARIO VISITAS Y BANCO DE SANGRE": [
     "horario visitas",
-    "visitar paciente",
-    "horarios de visita",
-    "banco de sangre",
-    "horario banco de sangre",
-    "a qué hora puedo ir",
-    "qué horario tienen",
-    "visitas hospital",
+    "horarios visitas",
+    "horario de visita",
+    "horarios de visitas",
+    "horario para visitar a un paciente",
+    "horarios para visitar a un paciente",
     "horario para ver pacientes",
+    "horarios para ver pacientes",
+    "horario banco de sangre",
+    "horarios banco de sangre",
+    "a qué hora puedo ir",
+    "horario",
+    "horarios",
+    "qué horario tienen",
+    "qué horarios tienen",
   ],
 
   "PROCESOS Y CUIDADOS EN EL ALTA": [
     "alta",
-    "cuidados del alta",
     "proceso de alta",
-    "qué hacer al alta",
+    "cuidados en el alta",
     "indicaciones de alta",
-    "me voy de alta",
-    "cuidados post alta",
   ],
 
-  "RESULTADOS DE EXÁMENES": [
-    "resultados",
-    "exámenes",
-    "laboratorio",
-    "imágenes",
-    "radiología",
-    "resultados de exámenes",
-    "ver exámenes",
-    "descargar resultados",
-    "imagenología",
-    "laboratorio clínico",
-  ],
-
+  
   // INFORMACIÓN ADMINISTRATIVA Y PAGOS
-  GES: [
+  "INFORMACIÓN GES": [
     "ges",
+    "garantías explícitas en salud",
     "garantías explícitas",
-    "beneficio ges",
     "cobertura ges",
-    "orientación ges",
     "enfermedades ges",
+    "beneficio ges",
+    "orientación ges",
   ],
 
-  CAEC: [
+  "INFORMACIÓN CAEC": [
     "caec",
+    "cobertura adicional para enfermedades catastróficas",
     "cobertura adicional",
     "enfermedades catastróficas",
     "beneficio caec",
-    "deducible caec",
+    "orientación caec",
   ],
 
-  "LEY DE URGENCIA": [
+  "INFORMACIÓN LEY DE URGENCIA": [
     "ley de urgencia",
     "urgencia vital",
-    "préstamo legal",
     "financiamiento urgencia",
   ],
 
   "COSTO DE PRESTACIONES": [
-    "aranceles",
-    "costo",
-    "valor de prestaciones",
-    "cuánto cuesta",
-    "precios",
-    "costo hospital",
+    "aranceles hospitalarios",
     "arancel hospitalario",
-    "valores de servicios",
+    "costos",
+    "costo de prestaciones",
+    "costo de servicios",
+    "costo de procedimientos",
+    "precios",
+    "precio de prestaciones",
+    "precio de servicios",
+    "precio de procedimientos",
+    "valores",
+    "valor de prestaciones",
+    "valor de servicios",
+    "valor de procedimientos",
   ],
 
-  PRESUPUESTOS: [
+  "PRESUPUESTOS": [
+    "presupuestos",
     "presupuesto",
-    "cotización",
-    "cotizar cirugía",
-    "presupuesto exámenes",
-    "precio procedimiento",
-    "cuánto vale cirugía",
-    "cotizar",
+    "presupuestos médicos",
+    "presupuesto médico",
+    "solicitar presupuestos",
+    "solicitar presupuesto",
+    "solicitar presupuestos médicos",
+    "solicitar presupuesto médico",
+    "presupuesto de cirugía",
+    "presupuesto de intervención quirúrgica",
+    "presupuesto de exámenes",
+    "presupuesto de procedimientos",
+    "precio cirugía",
+    "precio intervención quirúrgica",
+    "precio exámenes",
+    "precio procedimientos",
   ],
 
   "CUENTA HOSPITALARIA Y PAGOS": [
     "cuenta hospitalaria",
-    "pagar cuenta",
     "estado de cuenta",
+    "estado de cuenta hospitalaria",
     "detalle de cuenta",
+    "detalle de cuenta hospitalaria",
+    "pagar cuenta",
+    "pagar mi cuenta",
     "pago online",
-    "cuenta paciente",
+    "realizar pago online",
     "revisión de cuenta",
     "cuánto debo",
   ],
 
   "SUGERENCIAS, RECLAMOS Y FELICITACIONES": [
-    "reclamo",
-    "felicitación",
+    "sugerencias",
     "sugerencia",
+    "reclamos",
+    "reclamo",
+    "felicitaciones",
+    "felicitación",
     "opinión",
     "queja",
     "comentario",
-    "formular reclamo",
     "feedback",
   ],
 
-  // ACOMPAÑANTES, VISITAS Y SERVICIOS
-  "INGRESO DE MASCOTAS": [
-    "mascotas",
-    "ingresar mascota",
-    "perros",
-    "gatos",
-    "ver mascota",
-    "visita mascota",
-    "ingreso animal",
-  ],
-
+  // ACOMPAÑANTES, VISITAS Y SERVICIOS DISPONIBLES
   "DIFERENCIA ENTRE ACOMPAÑANTE Y VISITA": [
     "acompañante",
     "visita",
     "diferencia acompañante visita",
     "quién puede acompañar",
     "quién puede visitar",
-    "responsable",
   ],
 
-  "ROL Y RESPONSABILIDADES DEL ACOMPAÑANTE": [
+   "ROL Y RESPONSABILIDADES DEL ACOMPAÑANTE": [
+    "rol del acompañante",
     "rol acompañante",
-    "responsabilidades",
+    "responsabilidades del acompañante",
+    "responsabilidades acompañante",
     "acompañante responsable",
     "funciones del acompañante",
   ],
 
   "ROL DEL RESPONSABLE DEL PAGARÉ": [
     "responsable del pagaré",
+    "quién firma el pagaré",
     "pagaré hospital",
-    "quién firma pagaré",
     "responsabilidad financiera",
   ],
 
   "CUIDADOR DE EMPRESA EXTERNA": [
-    "cuidador externo",
+    "cuidador de empresa externa",
     "cuidador en convenio",
     "empresa externa",
-    "cuidador",
-    "requisitos cuidador",
   ],
 
   "LEY MILA N°21.372": [
     "ley mila",
+    "ley 21.372",
+    "ley N°21.372",
     "acompañamiento nna",
     "derecho a acompañante",
     "acompañante significativo",
-    "ley 21.372",
   ],
 
   "INGRESO DE PERROS DE ASISTENCIA": [
     "perros de asistencia",
+    "perro de asistencia",
+    "perros de apoyo",
+    "perro de apoyo",
     "asistencia animal",
-    "ingreso perro",
-    "perro apoyo",
-    "mascota certificada",
+  ],
+  
+  "INGRESO DE MASCOTAS": [
+    "mascotas",
+    "ingresar mascotas",
+    "visita mascotas",
+    "ingresar animal",
   ],
 
-  "CONDICIONES DE ENTRADA DE VISITAS": [
+  "CONDICIONES DE ENTRADA DE VISITAS AL HOSPITAL": [
     "condiciones de entrada",
+    "condiciones para ser vsiita",
     "qué necesito para visitar",
     "requisitos visita",
     "quién puede entrar",
     "restricciones de ingreso",
   ],
 
-  "ELEMENTOS PERMITIDOS Y NO PERMITIDOS": [
+  "ELEMENTOS PERMITIDOS Y NO PERMITIDOS AL INGRESO AL HOSPITAL": [
     "elementos permitidos",
     "qué puedo llevar",
     "no permitido",
@@ -244,7 +272,9 @@ const TOPICS_RAW = {
 
   "ESPACIOS DE ORACIÓN Y REFLEXIÓN": [
     "capilla",
+    "reflexión",
     "oratorio",
+    "espacios de reflexión",
     "espacios de oración",
     "iglesia",
     "misa",
@@ -254,21 +284,29 @@ const TOPICS_RAW = {
 
   "CAJERO AUTOMÁTICO, WIFI Y ESTACIONAMIENTOS": [
     "cajero",
-    "wifi",
-    "estacionamiento",
-    "dónde estacionar",
+    "cajero automático",
+    "cajeros",
+    "cajeros automático",
     "internet",
     "red wifi",
+    "wifi",
+    "wi-fi",
+    "estacionamiento",
+    "estacionamientos",
+    "dónde estacionar",
   ],
 
   // SOLICITUDES
-  SOLICITUDES: [
+  "SOLICITUDES": [
+    "solicitud",
     "solicitudes",
     "hacer solicitud",
+    "enviar solicitud",
     "pedir algo",
-    "requerimiento",
-    "trámite",
     "necesito solicitar",
+    "solicitar limpieza",
+    "solicitar mantención",
+    "solicitar asistencia social",
   ],
 };
 
@@ -289,6 +327,6 @@ function detectTopic(question) {
     }
   }
 
-  return "otro";
+  return "OTRO";
 }
 module.exports = detectTopic;
