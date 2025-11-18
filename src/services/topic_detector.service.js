@@ -265,12 +265,13 @@ const TOPICS_RAW = {
 
   "SERVICIOS DE ALIMENTACIÓN": [
     "cafetería",
+    "cafe",
     "comida",
-    "máquinas",
+    "máquinas de comida",
+    "máquinas expendedoras",
     "marketplace",
     "comprar comida",
     "dónde comer",
-    "máquinas expendedoras",
   ],
 
   "ESPACIOS DE ORACIÓN Y REFLEXIÓN": [
