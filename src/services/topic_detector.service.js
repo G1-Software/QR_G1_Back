@@ -12,9 +12,12 @@ function normalize(text) {
 const TOPICS_RAW = {
   // INFORMACIÓN CLÍNICA AL PACIENTE
   "RESULTADOS DE EXÁMENES": [
+    "exámenes",
     "resultados",
     "resultados de exámenes",
     "ver exámenes",
+    "consultar exámenes",
+    "descargar exámenes",
     "ver mis exámenes",
     "exámenes de laboratorio",
     "exámenes de imágenes",
@@ -25,12 +28,14 @@ const TOPICS_RAW = {
 
   "DOCUMENTACIÓN CLÍNICA": [
     "documentación clínica",
+    "documentos clínicos",
     "documentos médicos",
     "solicitar documentos",
     "obtener documentos",
     "ficha clínica",
     "copia de mi ficha clínica",
     "ver mi ficha clínica",
+    "mi historial médico",
     "epicrisis",
     "copia de mi epicrisis",
     "ver mi epicrisis",
@@ -66,6 +71,8 @@ const TOPICS_RAW = {
     "agendar hora",
     "donde agendo una hora",
     "sacar hora",
+    "pedir hora",
+    "tomar hora",
     "reservar hora",
     "control post hospitalización",
     "agendar control",
@@ -93,6 +100,7 @@ const TOPICS_RAW = {
   "PROCESOS Y CUIDADOS EN EL ALTA": [
     "alta",
     "proceso de alta",
+    "recomendaciones de alta",
     "cuidados en el alta",
     "indicaciones de alta",
   ],
@@ -139,6 +147,7 @@ const TOPICS_RAW = {
     "valor de prestaciones",
     "valor de servicios",
     "valor de procedimientos",
+    "tarifas",
   ],
 
   "PRESUPUESTOS": [
@@ -154,24 +163,26 @@ const TOPICS_RAW = {
     "presupuesto de intervención quirúrgica",
     "presupuesto de exámenes",
     "presupuesto de procedimientos",
-    "precio cirugía",
-    "precio intervención quirúrgica",
-    "precio exámenes",
-    "precio procedimientos",
   ],
 
   "CUENTA HOSPITALARIA Y PAGOS": [
     "cuenta hospitalaria",
+    "dueda hospitalaria",
     "estado de cuenta",
     "estado de cuenta hospitalaria",
     "detalle de cuenta",
     "detalle de cuenta hospitalaria",
     "pagar cuenta",
     "pagar mi cuenta",
+    "pago de cuenta",
     "pago online",
     "realizar pago online",
     "revisión de cuenta",
     "cuánto debo",
+    "mi deuda",
+    "cuánto tengo que pagar",
+    "pagar hospital",
+    "boleta hospital",
   ],
 
   "SUGERENCIAS, RECLAMOS Y FELICITACIONES": [
@@ -185,6 +196,7 @@ const TOPICS_RAW = {
     "queja",
     "comentario",
     "feedback",
+    "sugerir",
   ],
 
   // ACOMPAÑANTES, VISITAS Y SERVICIOS DISPONIBLES
@@ -210,12 +222,14 @@ const TOPICS_RAW = {
     "quién firma el pagaré",
     "pagaré hospital",
     "responsabilidad financiera",
+    "responsable económico",
   ],
 
   "CUIDADOR DE EMPRESA EXTERNA": [
     "cuidador de empresa externa",
     "cuidador en convenio",
     "empresa externa",
+    "cuidador externo",
   ],
 
   "LEY MILA N°21.372": [
@@ -230,6 +244,9 @@ const TOPICS_RAW = {
   "INGRESO DE PERROS DE ASISTENCIA": [
     "perros de asistencia",
     "perro de asistencia",
+    "perro guía",
+    "perro acompañante",
+    "perro de ayuda",
     "perros de apoyo",
     "perro de apoyo",
     "asistencia animal",
@@ -243,14 +260,17 @@ const TOPICS_RAW = {
     "visita mascota",
     "visita mascotas",
     "ingresar animal",
+    "mi mascota",
   ],
 
   "CONDICIONES DE ENTRADA DE VISITAS AL HOSPITAL": [
     "condiciones de entrada",
+    "condiciones de ingreso",
     "condiciones para ser vsiita",
     "qué necesito para visitar",
     "requisitos visita",
     "quién puede entrar",
+    "requisitos de ingreso",
     "restricciones de ingreso",
   ],
 
@@ -272,6 +292,8 @@ const TOPICS_RAW = {
     "marketplace",
     "comprar comida",
     "dónde comer",
+    "almuerzo",
+    "snack",
   ],
 
   "ESPACIOS DE ORACIÓN Y REFLEXIÓN": [
@@ -284,6 +306,8 @@ const TOPICS_RAW = {
     "misa",
     "rosario",
     "oración",
+    "lugar para rezar",
+    "espacio espiritual",
   ],
 
   "CAJERO AUTOMÁTICO, WIFI Y ESTACIONAMIENTOS": [
@@ -291,6 +315,7 @@ const TOPICS_RAW = {
     "cajero automático",
     "cajeros",
     "cajeros automático",
+    "sacar plata",
     "internet",
     "red wifi",
     "wifi",
