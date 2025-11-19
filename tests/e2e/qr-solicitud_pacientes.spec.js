@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test('test hacer solicitud de forma correcta ', async ({ page }) => {
-  await page.goto('https://qr-g1-front.vercel.app/?token=a3f5c2d8e9b14f6c8a0d3e4b9f2c1a7e');
+  await page.goto('https://qr-uc-christus.app/?token=a3f5c2d8e9b14f6c8a0d3e4b9f2c1a7e');
   await expect(page.getByRole('link', { name: 'SOLICITUDES (LIMPIEZA, MANTENCIÓN, NUTRICIÓN, ETC)' })).toBeVisible();
   await page.getByRole('link', { name: 'SOLICITUDES (LIMPIEZA, MANTENCIÓN, NUTRICIÓN, ETC)' }).click();
   await expect(page.getByRole('heading', { name: 'ENVÍO DE SOLICITUD' })).toBeVisible();
