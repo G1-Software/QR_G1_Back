@@ -6,7 +6,7 @@ dotenv.config();
 test("test login con cuenta que no existe por lo tanto no debe dejar entrar", async ({
   page,
 }) => {
-  await page.goto("https://qr-g1-front.vercel.app/admin");
+  await page.goto("https://qr-uc-christus.app/admin");
   await page.getByRole("textbox", { name: "Email address" }).click();
   await page
     .getByRole("textbox", { name: "Email address" })
@@ -18,7 +18,7 @@ test("test login con cuenta que no existe por lo tanto no debe dejar entrar", as
 });
 
 test("test LOGIN cuenta admin exitoso", async ({ page }) => {
-  await page.goto("https://qr-g1-front.vercel.app/admin");
+  await page.goto("https://qr-uc-christus.app/admin");
   await page.getByRole("textbox", { name: "Email address" }).click();
   await page.getByRole("textbox", { name: "Email address" }).fill("");
   await page.getByRole("textbox", { name: "Email address" }).press("CapsLock");
