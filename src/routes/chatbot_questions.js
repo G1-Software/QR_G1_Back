@@ -14,7 +14,6 @@ router.post("/question", async (req, res) => {
     if (!question || !qr_id) {
       return res.status(400).json({ error: "Los campos question y qr_id son obligatorios." });
     }
-
     const response = await axios.post(
       "https://www.chatbase.co/api/v1/chat",
       {

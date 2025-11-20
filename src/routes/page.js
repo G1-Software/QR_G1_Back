@@ -4,7 +4,7 @@ const router = express.Router();
 
 // Obtener todas
 router.get('/', async (_req, res) => {
-    const { data, error } = await supabase.from('page').select('*');
+    const { data, error } = await supabase.from('page').select('id, name, content_markdown').order("name", { ascending: true });
     if (error) return res.status(400).json({ error: error.message });
     res.json({
         message: 'Listado obtenido correctamente.',
@@ -15,7 +15,7 @@ router.get('/', async (_req, res) => {
 // Obtener una por id
 router.get('/:id', async (req, res) => {
     const { id } = req.params; 
-    const { data, error } = await supabase.from('page').select('*').eq('id', id).single();
+    const { data, error } = await supabase.from('page').select('id, content_html').eq('id', id).single();
     if (error) return res.status(404).json({ error: error.message });
     res.json({
         message: `Page con id ${id} obtenida correctamente.`,
