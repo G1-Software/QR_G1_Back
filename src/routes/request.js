@@ -85,7 +85,7 @@ router.get("/", async (req, res) => {
     });
   } catch (err) {
     console.error("Error obteniendo requests:", err);
-    return res.status(500).json({ error: "Error interno del servidor." });
+    return res.status(400).json({ error: "Error interno del servidor." });
   }
 });
 
