@@ -10,7 +10,7 @@ test("test login con cuenta que no existe por lo tanto no debe dejar entrar", as
   await page.getByRole("textbox", { name: "Email address" }).click();
   await page
     .getByRole("textbox", { name: "Email address" })
-    .fill("testmalouc.cl");
+    .fill("testmalo1@uc.cl");
   await page.getByRole("textbox", { name: "Password" }).click();
   await page.getByRole("textbox", { name: "Password" }).fill("falso");
   await page.getByRole("button", { name: "Continue", exact: true }).click();
