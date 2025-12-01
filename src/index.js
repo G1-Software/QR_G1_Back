@@ -20,11 +20,11 @@ app.use(limiter);
 app.use('/staff', jwtCheck, require('./routes/staff'));
 app.use('/request', require('./routes/request'));
 app.use('/qr', require('./routes/qr'));
-app.use('/qr_scan_log', jwtCheck, require('./routes/qr_scan_log'));
-app.use('/page', jwtCheck, require('./routes/page'));
-app.use('/page_view_log', jwtCheck, require('./routes/page_view_log'));
-app.use("/chatbot_questions", jwtCheck, require("./routes/chatbot_questions"));
-app.use("/chatbot_entry_log", jwtCheck, require("./routes/chatbot_entry_log"));
+app.use('/qr_scan_log', require('./routes/qr_scan_log'));
+app.use('/page', require('./routes/page'));
+app.use('/page_view_log', require('./routes/page_view_log'));
+app.use("/chatbot_questions", require("./routes/chatbot_questions"));
+app.use("/chatbot_entry_log", require("./routes/chatbot_entry_log"));
 
 app.get("/", (_req, res) => res.send("Hello World! desde QR_G1_Software_Back"));
 

@@ -2,6 +2,7 @@ const express = require("express");
 const supabase = require("../supabase");
 const detectTopic = require("../services/topic_detector.service");
 require("dotenv").config();
+const jwtCheck = require('../middleware/auth0');
 
 const router = express.Router();
 
@@ -33,7 +34,7 @@ router.post("/question", async (req, res) => {
 });
 
 // Obtener todas
-router.get("/", async (_req, res) => {
+router.get("/", jwtCheck, async (_req, res) => {
   try {
     const { data, error } = await supabase
       .from("chatbot_questions")
