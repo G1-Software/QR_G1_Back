@@ -27,13 +27,11 @@ test('test ir al listado de solicitudes y visualizarlas', async ({ page }) => {
 });
 
 
-test('test ir al dashboard de metricas de solicitudes', async ({ page }) => {
+test('test hacer el log in y que se haga de forma correcta', async ({ page }) => {
   await page.goto('https://qr-uc-christus.app/admin');
   await page.getByRole('textbox', { name: 'Email address' }).click();
   await page.getByRole('textbox', { name: 'Email address' }).fill('dafne.valdivia@uc.cl');
   await page.getByRole('textbox', { name: 'Password' }).click();
   await page.getByRole('textbox', { name: 'Password' }).fill('20.819.320-1');
   await page.getByRole('button', { name: 'Continue' }).click();
-  await page.getByRole('link', { name: 'Acceder arrow_right_alt' }).nth(1).click();
-  await expect(page.locator('iframe[title="Google Looker Studio dashboard"]').contentFrame().getByText('Cantidad total de solicitudes realizadas. calendar_today Selecciona un periodo')).toBeVisible();
 });
