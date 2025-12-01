@@ -1,6 +1,7 @@
 const express = require('express');
 const supabase = require('../supabase');
 const router = express.Router();
+const jwtCheck = require('../middleware/auth0');
 
 // Obtener todas
 router.get('/', async (_req, res) => {
@@ -24,7 +25,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // Actualizar una 
-router.put('/:id', async (req, res) => {
+router.put('/:id', jwtCheck, async (req, res) => {
     const { id } = req.params;     
     const body = req.body;         
     const { data, error } = await supabase.from('page').update(body).eq('id', id).select().single();

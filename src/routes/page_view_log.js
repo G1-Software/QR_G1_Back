@@ -1,9 +1,10 @@
 const express = require('express');
 const supabase = require('../supabase');
 const router = express.Router();
+const jwtCheck = require('../middleware/auth0');
 
 // Obtener todos
-router.get('/', async (_req, res) => {
+router.get('/', jwtCheck, async (_req, res) => {
     const { data, error } = await supabase.from('page_view_log').select('*');
     if (error) return res.status(400).json({ error: error.message });
     res.json({
@@ -13,7 +14,7 @@ router.get('/', async (_req, res) => {
 });
 
 // Obtener uno por id
-router.get('/:id', async (req, res) => {
+router.get('/:id', jwtCheck, async (req, res) => {
     const { id } = req.params;
     const { data, error } = await supabase.from('page_view_log').select('*').eq('id', id).single();
     if (error) return res.status(404).json({ error: error.message });

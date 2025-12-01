@@ -1,6 +1,7 @@
 const express = require("express");
 const supabase = require("../supabase");
 require("dotenv").config();
+const jwtCheck = require('../middleware/auth0');
 
 const router = express.Router();
 
@@ -33,7 +34,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.get("/", async (req, res) => {
+router.get("/", jwtCheck,  async (req, res) => {
   try {
     const { data, error } = await supabase
       .from("chatbot_entry_log")

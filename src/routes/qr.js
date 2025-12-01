@@ -1,9 +1,10 @@
 const express = require('express');
 const supabase = require('../supabase');
 const router = express.Router();
+const jwtCheck = require('../middleware/auth0')
 
 // Obtener todos
-router.get('/', async (_req, res) => {
+router.get('/', jwtCheck, async (_req, res) => {
     const { data, error } = await supabase.from('qr').select('*');
     if (error) return res.status(400).json({ error: error.message });
     res.json({
