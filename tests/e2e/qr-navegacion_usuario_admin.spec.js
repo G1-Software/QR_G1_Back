@@ -33,7 +33,7 @@ test('test ir a instructivo del editor y ver el instructivo', async ({ page }) =
   await expect(page.locator('div').filter({ hasText: '📝 Instructivo Interactivo' }).nth(3)).toBeVisible();
 });
 
-test('test ir a listado de solicitudes y después pasarse al editor y más', async ({ page }) => {
+test('test ir a listado de solicitudes y después pasarse al editor y ', async ({ page }) => {
   await page.goto('https://qr-uc-christus.app/admin');
   await page.getByRole('textbox', { name: 'Email address' }).click();
   await page.getByRole('textbox', { name: 'Email address' }).fill(process.env.ADMIN_MAIL_LOGIN);
