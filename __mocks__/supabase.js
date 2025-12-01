@@ -8,6 +8,7 @@ const qrSeed = require('./seeds/qr.json');
 const qrScanLogSeed = require('./seeds/qr_scan_log.json');
 const pageSeed = require('./seeds/page.json');
 const pageViewLogSeed = require('./seeds/page_view_log.json');
+const requestWithQrSeed = require('./seeds/vw_request_with_qr.json')
 
 const clone = v => JSON.parse(JSON.stringify(v));
 const nowIso = () => new Date().toISOString();
@@ -18,7 +19,8 @@ let INITIAL_DB = {
   qr: qrSeed,
   qr_scan_log: qrScanLogSeed,
   page: pageSeed,
-  page_view_log: pageViewLogSeed
+  page_view_log: pageViewLogSeed,
+  vw_request_with_qr: requestWithQrSeed
 };
 let DB = clone(INITIAL_DB);
 

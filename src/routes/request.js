@@ -14,53 +14,120 @@ router.get("/", jwtCheck, async (req, res) => {
     status,
     startDate,
     endDate,
+    institution,
+    building,
+    floor,
+    service,
+    room,
+    bed,
   } = req.query;
 
   const from = (page - 1) * limit;
   const to = from + Number(limit) - 1;
 
-  let query = supabase.from("request").select("*", { count: "exact" });
+  try {
+    let query = supabase
+      .from("vw_request_with_qr")
+      .select("*", { count: "exact" });
 
-  if (area) query = query.eq("area", area);
-  if (subarea) query = query.eq("subarea", subarea);
-  if (status) query = query.eq("status", status);
+    // Filtros viejos
+    if (area) query = query.eq("area", area);
+    if (subarea) query = query.eq("subarea", subarea);
+    if (status) query = query.eq("status", status);
 
-  if (startDate && endDate) {
-    const adjustedEnd = new Date(endDate);
-    adjustedEnd.setDate(adjustedEnd.getDate() + 1); // mover al siguiente día
-    adjustedEnd.setMilliseconds(adjustedEnd.getMilliseconds() - 1); // último ms del día original
+    // Fechas
+    if (startDate && endDate) {
+      const adjustedEnd = new Date(endDate);
+      adjustedEnd.setDate(adjustedEnd.getDate() + 1);
+      adjustedEnd.setMilliseconds(adjustedEnd.getMilliseconds() - 1);
 
+      query = query
+        .gte("created_at", startDate)
+        .lte("created_at", adjustedEnd.toISOString());
+    } else if (startDate) {
+      query = query.gte("created_at", startDate);
+    } else if (endDate) {
+      const adjustedEnd = new Date(endDate);
+      adjustedEnd.setDate(adjustedEnd.getDate() + 1);
+      adjustedEnd.setMilliseconds(adjustedEnd.getMilliseconds() - 1);
+
+      query = query.lte("created_at", adjustedEnd.toISOString());
+    }
+
+    // Nuevos filtros de QR
+    if (institution) query = query.eq("institution", institution);
+    if (building) query = query.eq("building", building);
+    if (floor) query = query.eq("floor", Number(floor));
+    if (service) query = query.eq("service", service);
+    if (room) query = query.eq("room", Number(room));
+    if (bed) query = query.eq("bed", Number(bed));
+
+    // Orden y paginación
     query = query
-      .gte("created_at", startDate)
-      .lte("created_at", adjustedEnd.toISOString());
-  } else if (startDate) {
-    query = query.gte("created_at", startDate);
-  } else if (endDate) {
-    const adjustedEnd = new Date(endDate);
-    adjustedEnd.setDate(adjustedEnd.getDate() + 1);
-    adjustedEnd.setMilliseconds(adjustedEnd.getMilliseconds() - 1);
+      .range(from, to)
+      .order("created_at", { ascending: false })
+      .order("id", { ascending: false });
 
-    query = query.lte("created_at", adjustedEnd.toISOString());
+    const { data, error, count } = await query;
+
+    if (error) {
+      return res.status(400).json({ error: error.message });
+    }
+
+    return res.json({
+      message: "Listado obtenido correctamente.",
+      pagination: {
+        page: Number(page),
+        limit: Number(limit),
+        total: count,
+        totalPages: Math.ceil(count / limit),
+      },
+      data,
+    });
+  } catch (err) {
+    console.error("Error obteniendo requests:", err);
+    return res.status(400).json({ error: "Error interno del servidor." });
   }
+});
 
-  query = query.range(from, to).order("created_at", { ascending: false });
+router.get("/filters/qr-options", async (req, res) => {
+  try {
+    const fields = [
+      "institution",
+      "building",
+      "floor",
+      "service",
+      "room",
+      "bed",
+    ];
 
-  const { data, error, count } = await query;
+    const responses = await Promise.all(
+      fields.map((field) =>
+        supabase.from("qr").select(field, { distinct: true })
+      )
+    );
 
-  if (error) {
-    return res.status(400).json({ error: error.message });
+    const result = {};
+
+    fields.forEach((field, i) => {
+      const { data, error } = responses[i];
+
+      if (error) {
+        console.error(`Error en campo ${field}:`, error);
+        return res.status(400).json({ error: error.message });
+      }
+
+      result[field] = [...new Set(data.map((row) => row[field]))].sort();
+    });
+
+    return res.json({
+      message: "Opciones de filtros obtenidas correctamente.",
+      data: result,
+    });
+  } catch (err) {
+    console.error("Error general:", err);
+    res.status(500).json({ error: "Error interno del servidor." });
   }
-
-  res.json({
-    message: "Listado obtenido correctamente.",
-    pagination: {
-      page: Number(page),
-      limit: Number(limit),
-      total: count,
-      totalPages: Math.ceil(count / limit),
-    },
-    data,
-  });
 });
 
 // Obtener una por id
