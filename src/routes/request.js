@@ -2,9 +2,10 @@ const express = require("express");
 const supabase = require("../supabase");
 const router = express.Router();
 const { handleRequestEmailFlow } = require("../services/email.service");
+const jwtCheck = require('../middleware/auth0');
 
 // Obtener todas (con filtros y paginación)
-router.get("/", async (req, res) => {
+router.get("/", jwtCheck, async (req, res) => {
   const {
     page = 1,
     limit = 10,
@@ -63,7 +64,7 @@ router.get("/", async (req, res) => {
 });
 
 // Obtener una por id
-router.get("/:id", async (req, res) => {
+router.get("/:id", jwtCheck, async (req, res) => {
   const { id } = req.params;
   const { data, error } = await supabase
     .from("request")
@@ -97,7 +98,7 @@ router.post("/", async (req, res) => {
 });
 
 // Actualizar una
-router.put("/:id", async (req, res) => {
+router.put("/:id", jwtCheck, async (req, res) => {
   const { id } = req.params;
   const body = req.body;
 
@@ -124,7 +125,7 @@ router.put("/:id", async (req, res) => {
 });
 
 // Eliminar una por id
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", jwtCheck, async (req, res) => {
   const { id } = req.params;
   const { data, error } = await supabase
     .from("request")
